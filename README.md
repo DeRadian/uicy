@@ -1,0 +1,2 @@
+# uicy
+uiCY is an Open-Source GUI program based on scrCPY(Genymobile) and sndCPY(rom1v).It can be used to mirror your phone screen + internal audio to your PC(Windows/Linux)through USB data cable. It was made keeping bugdet gamers and streamers in mind whocannot afford devices like Elgato. Indeed this program cannot give as much qualityas Elgato but still it serves the purpose  i.e. you can easily stream/record at 480p.
