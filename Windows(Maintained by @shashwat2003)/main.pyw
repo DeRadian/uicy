@@ -20,16 +20,32 @@ def chk_dvc():
 
 
 def start_vid():
-    subprocess.Popen(["video.bat"], stdin=None, stdout=None, stderr=None, close_fds=True)
+    subprocess.Popen(["video-s.bat"], stdin=None, stdout=None, stderr=None, close_fds=True)
 
 
-def start_aud():
-    subprocess.Popen(["audio.bat"], stdin=None, stdout=None, stderr=None, close_fds=True)
+def start_audio():
+    subprocess.Popen(["audio-s.bat"])
+    audiobox.destroy()
 
-
-def ins_app():
-    app = subprocess.check_output("install_app.bat", universal_newlines=True)
-    print(app)
+def initial_aud():
+    global audiobox
+    audiobox = tk.Tk()
+    h = audiobox.winfo_screenheight() // 2 - 100
+    w = audiobox.winfo_screenwidth() // 2 - 300
+    audiobox.title("Starting Audio Service")
+    audiobox.geometry("600x200+%d+%d" % (w, h))
+    audiobox.configure(bg=black)
+    audiobox.focus_force()
+    subprocess.Popen(["initial_audio.bat"], stdin=None, stdout=None, stderr=None, close_fds=True)
+    txt = '''Initializing Process..
+After the process is successfull,
+Unlock your phone
+and allow to capture audio..
+Press the following button when done...'''
+    label = tk.Label(master=audiobox, text=txt, bg=black, font='Terminal', fg='green')
+    label.pack()
+    button = HoverButton(master=audiobox, command=start_audio, text='Start Audio',width=10,height=2,font=('Segoe UI', 14))
+    button.pack()
 
 
 global black, master, mm
@@ -38,6 +54,9 @@ chk_first_run()
 path = os.getcwd() + "/tools"
 os.chdir(path)
 subprocess.Popen(["start.bat"])
+
+
+
 mm = tk.Tk()
 mm.title("                                                                                   uiCY: Your Capture Card")
 mm.configure(bg=black)
@@ -48,10 +67,16 @@ mm.resizable(False, False)
 mm.focus_force()
 ico = tk.PhotoImage(file=r'../photos/uicy.png')
 mm.tk.call('wm', 'iconphoto', mm._w, ico)
+
+
 # FRAMES
 f2 = tk.LabelFrame(master=mm, height=560, width=520, bg='black')
 f2.pack()
 f2.place(x=10, y=10)
+
+
+chk_dvc()
+
 
 # BUTTONS
 video_img = tk.PhotoImage(file=r'../photos/video.png')
@@ -61,18 +86,18 @@ video_b.pack()
 video_b.place(x=540, y=10)
 
 about_img = tk.PhotoImage(file=r'../photos/about.png')
-about_b = HoverButton(master=mm, image=about_img, command=start_vid, bd=0, bg=black, activebackground="#cce4ff",
+about_b = HoverButton(master=mm, image=about_img, bd=0, bg=black, activebackground="#cce4ff",
                       relief='flat')
 about_b.pack()
 about_b.place(x=540, y=200)
 settings_img = tk.PhotoImage(file=r'../photos/settings.png')
-settings_b = HoverButton(master=mm, image=settings_img, command=start_vid, bd=0, bg=black, activebackground="#cce4ff",
+settings_b = HoverButton(master=mm, image=settings_img, bd=0, bg=black, activebackground="#cce4ff",
                          relief='flat')
 settings_b.pack()
 settings_b.place(x=670, y=200)
 
 audio_img = tk.PhotoImage(file=r'../photos/audio.png')
-audio_b = HoverButton(master=mm, image=audio_img, command=start_vid, bd=0, bg=black, activebackground="#cce4ff",
+audio_b = HoverButton(master=mm, image=audio_img, bd=0, bg=black, activebackground="#cce4ff",command=initial_aud,
                       relief='flat')
 audio_b.pack()
 audio_b.place(x=540, y=390)

@@ -1,1 +1,3 @@
+@echo off
+echo Starting ADB server....
 adb start-server

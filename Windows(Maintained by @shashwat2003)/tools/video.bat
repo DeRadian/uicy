@@ -1,1 +1,1 @@
-ex.vbs
+scrcpy -m 1024
