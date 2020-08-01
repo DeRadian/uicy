@@ -143,4 +143,10 @@ audio_b = ext.HoverButton(master=mm, image=audio_img, command=initial_aud, bd=0,
                       relief='flat')
 audio_b.pack()
 audio_b.place(x=540, y=390)
+
+lb2 = tk.Label(master=mm, text='Designed with ❤ in India!', bg=black, fg='white',
+                   justify='left', font=('Segoe UI', 10))
+lb2.pack()
+lb2.place(x=10, y=570)
+
 mm.mainloop()
