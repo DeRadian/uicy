@@ -1,1 +1,1 @@
-scrcpy -m 1024
+scrcpy -m 1080
