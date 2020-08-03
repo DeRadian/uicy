@@ -1,4 +1,3 @@
-import tutorial
 import tkinter as tk
 import os
 
@@ -19,27 +18,27 @@ class HoverButton(tk.Button):
 
 
 def chk_first_run():
-    if(os.path.isfile('usersettings/first_run')==False):
+    if(os.path.isfile('first_run')==False):
         return True
 
 def lowres():
-    file=open('tools/video.sh','w')
+    file=open('sh/video.sh','w')
     file.write("#!/bin/bash\nscrcpy -m 1024")
     file.close()
-    os.system('chmod +x tools/video.sh')
+    os.system('chmod +x sh/video.sh')
 
 def highres():
-    file=open('tools/video.sh','w')
+    file=open('sh/video.sh','w')
     file.write("#!/bin/bash\nscrcpy -m 2048")
     file.close()
-    os.system('chmod +x tools/video.sh')
+    os.system('chmod +x sh/video.sh')
 
 def qual():
-    fl=open("tools/video.sh")
+    fl=open("sh/video.sh")
     a=fl.read()
     b=a[22]+a[23]+a[24]+a[25]
     fl.close()
-        
+
     lbl=tk.Label(master=setting, text="CURRENT RESOLUTION "+b, bg=black, fg='white', font=('Ubuntu Bold',11))
     lbl.place(x=30,y=80)
 
@@ -52,7 +51,7 @@ def settings():
     def setreshigh1():
         highres()
         qual()
-        
+
     global setting, black, master, frame
     black = '#202125'
     setting = tk.Tk()
@@ -61,20 +60,20 @@ def settings():
     w=setting.winfo_screenwidth() // 2 - 300
     setting.geometry("275x115+%d+%d" % (w,h))
     setting.resizable(False,False)
-
+    setting.attributes('-topmost',True)
+    
     frame = tk.LabelFrame(master=setting,height=115,width=275,bg=black)
     frame.pack()
     frame.place(x=0,y=0)
 
-    
+
     B_low1 = HoverButton(master=frame, text="1024p", bg="#005eb0", font=('Teko Bold',14), relief='flat', activebackground=black, activeforeground='cyan', command=setreslow1)
     B_low1.pack()
     B_low1.place(x=30,y=30)
 
     B_high1 = HoverButton(master=frame, text="2048p", bg="#005eb0", font=('Teko Bold',14), relief='flat', activebackground=black, activeforeground='cyan', command=setreshigh1)
     B_high1.pack()
-    B_high1.place(x=150,y=30)    
+    B_high1.place(x=150,y=30)
 
     qual()
     setting.mainloop()
-

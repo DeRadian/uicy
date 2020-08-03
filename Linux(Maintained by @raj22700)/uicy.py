@@ -1,8 +1,8 @@
 import tkinter as tk
 import os
-import tutorial
+import modules.tutorial as tutorial
 import subprocess
-import tools.modules.extra as ext
+import modules.extra as ext
 
 
 def chk_dvc():
@@ -22,13 +22,13 @@ def chk_dvc():
 
 def start_vid():
     chk_dvc()
-    subprocess.Popen(["./tools/video.sh"], stdin=None, stdout=None, stderr=None, close_fds=True)
+    subprocess.Popen(["./sh/video.sh"], stdin=None, stdout=None, stderr=None, close_fds=True)
 
 
 def start_aud():
     chk_dvc()
     audiobox.destroy()
-    subprocess.Popen(["./tools/audio.sh"], stdin=None, stdout=None, stderr=None, close_fds=True)
+    subprocess.Popen(["./sh/audio.sh"], stdin=None, stdout=None, stderr=None, close_fds=True)
 
 
 def initial_aud():
@@ -40,7 +40,9 @@ def initial_aud():
     audiobox.geometry("600x200+%d+%d" % (w, h))
     audiobox.configure(bg=black)
     audiobox.focus_force()
-    subprocess.Popen(["./tools/sndcpy"], stdin=None, stdout=None, stderr=None, close_fds=True)
+    audiobox.attributes('-topmost',True)
+    
+    subprocess.Popen(["./sh/sndcpy"], stdin=None, stdout=None, stderr=None, close_fds=True)
     txt = '''Initializing Process..
 After the process is successfull,
 Unlock your phone
@@ -98,7 +100,7 @@ black = '#202125'
 chk=ext.chk_first_run()
 if chk==True :
     tutorial.Page1()
-    fop=open("usersettings/first_run","w")
+    fop=open("first_run","w")
     fop.write("exists")
     fop.close()
 
@@ -112,7 +114,7 @@ w = mm.winfo_screenwidth() // 2 - 400
 mm.geometry("800x600+%d+%d" % (w, h))  # widthxheight
 mm.resizable(False, False)
 mm.focus_force()
-ico = tk.PhotoImage(file=r'photos/uicy.png')
+ico = tk.PhotoImage(file=r'assets/uicy.png')
 mm.tk.call('wm', 'iconphoto', mm._w, ico)
 # FRAMES
 f2 = tk.LabelFrame(master=mm, height=560, width=520, bg='black')
@@ -120,25 +122,25 @@ f2.pack()
 f2.place(x=10, y=10)
 
 # BUTTONS
-video_img = tk.PhotoImage(file=r'photos/video.png')
+video_img = tk.PhotoImage(file=r'assets/video.png')
 video_b = ext.HoverButton(master=mm, image=video_img, command=start_vid, bd=0, bg=black, activebackground="#cce4ff",
                       relief='flat')  # bg='#e5f1ff'
 video_b.pack()
 video_b.place(x=540, y=10)
 
-about_img = tk.PhotoImage(file=r'photos/about.png')
+about_img = tk.PhotoImage(file=r'assets/about.png')
 about_b = ext.HoverButton(master=mm, image=about_img, command=about, bd=0, bg=black, activebackground="#cce4ff",
                       relief='flat')
 about_b.pack()
 about_b.place(x=540, y=200)
 
-settings_img = tk.PhotoImage(file=r'photos/settings.png')
+settings_img = tk.PhotoImage(file=r'assets/settings.png')
 settings_b = ext.HoverButton(master=mm, image=settings_img, command=ext.settings, bd=0, bg=black, activebackground="#cce4ff",
                          relief='flat')
 settings_b.pack()
 settings_b.place(x=670, y=200)
 
-audio_img = tk.PhotoImage(file=r'photos/audio.png')
+audio_img = tk.PhotoImage(file=r'assets/audio.png')
 audio_b = ext.HoverButton(master=mm, image=audio_img, command=initial_aud, bd=0, bg=black, activebackground="#cce4ff",
                       relief='flat')
 audio_b.pack()

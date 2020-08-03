@@ -1,10 +1,6 @@
 import tkinter as tk
 import os
-
-import tools.modules.extra as ex
-from tkinter.filedialog import askopenfile
-
-
+import modules.extra as ex
 
 
 def fade_in():
@@ -53,7 +49,7 @@ def Page2():
     frame.pack()
     frame.place(x=0, y=0)
 
-    logo_img = tk.PhotoImage(file=r'photos/uicy_t.png')
+    logo_img = tk.PhotoImage(file=r'assets/uicy_t.png')
     logo_img = logo_img.subsample(2, 2)
     logo = tk.Label(master=frame, image=logo_img, bg=black)
     logo.pack()
@@ -64,7 +60,7 @@ def Page2():
     intro.pack()
     intro.place(x=35, y=220)
 
-    f=open('tools/video.sh')
+    f=open('sh/video.sh')
     a=f.read()
     b=a[22]+a[23]+a[24]+a[25]+'p'
     f.close()
@@ -83,19 +79,19 @@ def Page2():
     warn.pack()
     warn.place(x=100,y=350)
 
-    low_img = tk.PhotoImage(file=r'photos/1024.png')
+    low_img = tk.PhotoImage(file=r'assets/1024.png')
     low_img = low_img.subsample(3,3)
     B_low = tk.Button(master=frame, image=low_img, bg=black, relief='flat', activebackground=black, command=setreslow)
     B_low.pack()
     B_low.place(x=550,y=280)
 
-    high_img = tk.PhotoImage(file=r'photos/2048.png')
+    high_img = tk.PhotoImage(file=r'assets/2048.png')
     high_img = high_img.subsample(3,3)
     B_high = tk.Button(master=frame, image=high_img, bg=black, relief='flat', activebackground=black, command=setreshigh)
     B_high.pack()
     B_high.place(x=650,y=280)    
 
-    nxt_img = tk.PhotoImage(file=r'photos/next.png')
+    nxt_img = tk.PhotoImage(file=r'assets/next.png')
     nxt_img = nxt_img.subsample(3, 3)
     nxt = tk.Button(master=frame, image=nxt_img, bg=black, relief='flat', activebackground=black, command=page2.destroy)
     nxt.pack()
@@ -125,7 +121,7 @@ def Page1():
     frame.pack()
     frame.place(x=0, y=0)
 
-    logo_img = tk.PhotoImage(file=r'photos/uicy_t.png')
+    logo_img = tk.PhotoImage(file=r'assets/uicy_t.png')
     logo_img = logo_img.subsample(2, 2)
     logo = tk.Label(master=frame, image=logo_img, bg=black)
     logo.pack()
@@ -150,7 +146,7 @@ def Page1():
                            justify='left')
     intro_label.pack()
     intro_label.place(x=0, y=270)
-    nxt_img = tk.PhotoImage(file=r'photos/next.png')
+    nxt_img = tk.PhotoImage(file=r'assets/next.png')
     nxt_img = nxt_img.subsample(3, 3)
     nxt = tk.Button(master=frame, image=nxt_img, bg=black, relief='flat', activebackground=black, command=page1.destroy)
     nxt.pack()
