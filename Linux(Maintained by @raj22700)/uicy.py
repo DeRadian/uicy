@@ -1,9 +1,8 @@
 import tkinter as tk
 import os
-import modules.tutorial as tutorial
+import tutorial as tutorial
 import subprocess
-import modules.extra as ext
-
+import extra as ext
 
 def chk_dvc():
     p = subprocess.check_output(["adb","devices"], universal_newlines=True)
@@ -21,8 +20,10 @@ def chk_dvc():
 
 
 def start_vid():
+    print(ext.res)
     chk_dvc()
-    subprocess.Popen(["./sh/video.sh"], stdin=None, stdout=None, stderr=None, close_fds=True)
+    ext.startV()
+    #subprocess.Popen(["./sh/video.sh"], stdin=None, stdout=None, stderr=None, close_fds=True)
 
 
 def start_aud():
@@ -41,7 +42,7 @@ def initial_aud():
     audiobox.configure(bg=black)
     audiobox.focus_force()
     audiobox.attributes('-topmost',True)
-    
+
     subprocess.Popen(["./sh/sndcpy"], stdin=None, stdout=None, stderr=None, close_fds=True)
     txt = '''Initializing Process..
 After the process is successfull,
@@ -66,8 +67,8 @@ def about():
     about_w.focus_force()
     about_w.attributes('-topmost', True)
     about_w.overrideredirect(1)
-    intro_txt =''' 
-uiCY is a open source GUI program 
+    intro_txt ='''
+uiCY is a open source GUI program
 Written in Python (tkinter) and Based on:
 1. scrCPY <https://github.com/Genymobile/scrcpy>
 2. sndCPY <https://github.com/rom1v/sndcpy>
@@ -80,8 +81,8 @@ and PRO Yashraj sir!                    [Linux Version]
 Developed under DeRadian@2020
 
 Follow us on Instagram:
-Shashwat: https://www.instagram.com/jaanijunior_13 
-Yashraj:  https://www.instagram.com/legendofrj10 
+Shashwat: https://www.instagram.com/jaanijunior_13
+Yashraj:  https://www.instagram.com/legendofrj10
 '''
     intro = tk.Text(master=about_w, bg=black,fg='white', font=['Ubuntu', 14])
     intro.insert(tk.INSERT, intro_txt)
@@ -146,7 +147,7 @@ audio_b = ext.HoverButton(master=mm, image=audio_img, command=initial_aud, bd=0,
 audio_b.pack()
 audio_b.place(x=540, y=390)
 
-lb2 = tk.Label(master=mm, text='Designed with ❤ in India!', bg=black, fg='white',
+lb2 = tk.Label(master=mm, text='Designed with ❤ in India!                                         Maintained By Yashraj Jangir', bg=black, fg='white',
                    justify='left', font=('Segoe UI', 10))
 lb2.pack()
 lb2.place(x=10, y=570)

@@ -1,7 +1,10 @@
 import tkinter as tk
 import os
-
 black='#202125'
+res="scrcpy -m 1024"
+
+def startV():
+    os.system(res)
 
 class HoverButton(tk.Button):
     def __init__(self, master, **kw):
@@ -22,22 +25,16 @@ def chk_first_run():
         return True
 
 def lowres():
-    file=open('sh/video.sh','w')
-    file.write("#!/bin/bash\nscrcpy -m 1024")
-    file.close()
-    os.system('chmod +x sh/video.sh')
+    global res
+    res="scrcpy -m 1024"
 
 def highres():
-    file=open('sh/video.sh','w')
-    file.write("#!/bin/bash\nscrcpy -m 2048")
-    file.close()
-    os.system('chmod +x sh/video.sh')
+    global res
+    res="scrcpy -m 2048"
 
 def qual():
-    fl=open("sh/video.sh")
-    a=fl.read()
-    b=a[22]+a[23]+a[24]+a[25]
-    fl.close()
+    a=res
+    b=a[10]+a[11]+a[12]+a[13]
 
     lbl=tk.Label(master=setting, text="CURRENT RESOLUTION "+b, bg=black, fg='white', font=('Ubuntu Bold',11))
     lbl.place(x=30,y=80)
@@ -61,7 +58,7 @@ def settings():
     setting.geometry("275x115+%d+%d" % (w,h))
     setting.resizable(False,False)
     setting.attributes('-topmost',True)
-    
+
     frame = tk.LabelFrame(master=setting,height=115,width=275,bg=black)
     frame.pack()
     frame.place(x=0,y=0)
