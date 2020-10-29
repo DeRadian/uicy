@@ -1,6 +1,6 @@
 import tkinter as tk
 import os
-import modules.extra as ex
+import extra as ex
 
 
 def fade_in():
@@ -9,6 +9,7 @@ def fade_in():
         alpha += .1
         master.attributes("-alpha", alpha)
         master.after(50, fade_in)
+
 
 
 def Page2():
@@ -25,25 +26,19 @@ def Page2():
 
     def setreslow():
         ex.lowres()
-    
         label = tk.Label(master=page2,text='CURRENT RESOLUTION 1024p', font=['Ubuntu Bold', 18], bg=black, fg='white')
         label.place(x=100,y=280)
-        
-    
+
+
     def setreshigh():
         ex.highres()
-    
         label = tk.Label(master=page2,text='CURRENT RESOLUTION 2048p', font=['Ubuntu Bold',18], bg=black, fg='white')
         label.place(x=100,y=280)
-    
 
-    # FADE IN ANIMATION
-    page2.attributes("-alpha", 0)
-    master = page2
-    fade_in()
+
 
     video_size=tk.IntVar()
-        
+
     # UI
     frame = tk.LabelFrame(master=page2, height=500, width=800, bg=black)
     frame.pack()
@@ -60,10 +55,8 @@ def Page2():
     intro.pack()
     intro.place(x=35, y=220)
 
-    f=open('sh/video.sh')
-    a=f.read()
-    b=a[22]+a[23]+a[24]+a[25]+'p'
-    f.close()
+    a=ex.res
+    b=a[10]+a[11]+a[12]+a[13]+'p'
 
     quality = tk.Label(master=frame, text='CURRENT RESOLUTION '+b, font=['Ubuntu Bold',18], bg=black, fg='white',justify='center')
     quality.pack()
@@ -74,7 +67,7 @@ def Page2():
     in settings tab at next window.
 
     '''
-    
+
     warn = tk.Label(master=frame,text=warn_txt,font=['Ubuntu',14], bg=black, fg='white')
     warn.pack()
     warn.place(x=100,y=350)
@@ -89,7 +82,7 @@ def Page2():
     high_img = high_img.subsample(3,3)
     B_high = tk.Button(master=frame, image=high_img, bg=black, relief='flat', activebackground=black, command=setreshigh)
     B_high.pack()
-    B_high.place(x=650,y=280)    
+    B_high.place(x=650,y=280)
 
     nxt_img = tk.PhotoImage(file=r'assets/next.png')
     nxt_img = nxt_img.subsample(3, 3)
@@ -131,16 +124,16 @@ def Page1():
     intro.pack()
     intro.place(x=20, y=210)
     intro_txt = '''
-    uiCY is an Open-Source GUI program based on scrCPY(Genymobile) 
+    uiCY is an Open-Source GUI program based on scrCPY(Genymobile)
     and sndCPY(rom1v).It can be used to mirror your phone screen +
-    internal audio to your PC(Windows/Linux) through USB data cable. 
+    internal audio to your PC(Windows/Linux) through USB data cable.
     It was made  keeping  bugdet  gamers  and streamers in mind who
-    cannot  afford  devices  like  Elgato™.  Indeed  this  program 
-    cannot give as much quality as Elgato™ but still it serves the 
-    purpose i.e. you can easily stream/record at 480p.The following 
+    cannot  afford  devices  like  Elgato™.  Indeed  this  program
+    cannot give as much quality as Elgato™ but still it serves the
+    purpose i.e. you can easily stream/record at 480p.The following
     window will guide you to setup uiCY on your system....
     Click Next to continue setup...
-    
+
     '''
     intro_label = tk.Label(master=frame, text=intro_txt, font=["Segoe UI Light", 14], bg=black, fg='white',
                            justify='left')
