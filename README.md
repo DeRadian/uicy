@@ -31,17 +31,17 @@ You can find the [guide here.](https://www.howtogeek.com/129728/how-to-access-th
 
 Everything can be installed with apt-get and snapcraft through terminal.
 Make sure you have all these!
->If anything is missing than use these commands to get them.
+If anything is missing than use these commands to get them.
 scrcpy
-	**sudo apt-get install scrcpy**
+>	**sudo apt-get install scrcpy**
 python3
-	**sudo apt-get install python3**
+>	**sudo apt-get install python3**
 tkinter
-	**sudo apt-get install python3-tk**
+>	**sudo apt-get install python3-tk**
 adb
-	already present
+>	already present
 vlc
-	run the install script given in vlc directory
+>	run the install script given in vlc directory
 # ScreenShots
 ### Windows
 ![photo_2020-08-01_17-00-40](https://user-images.githubusercontent.com/68629996/89100908-c35a4c80-d418-11ea-9163-af2bd2efbced.jpg)
