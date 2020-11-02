@@ -35,20 +35,13 @@ Make sure you have all these!
 **scrcpy**
 	sudo apt-get install scrcpy
 **python,python3**
-	sudo apt-get install python
 	sudo apt-get install python3
  **tkinter**
-	sudo apt-get install python-tk
 	sudo apt-get install python3-tk
 **adb**
-	sudo apt-get install adb
+	already present
 **vlc**
-	Use either
-		sudo apt-get install vlc
-or 
-		sudo snap install vlc
-	prefered snap install.
-
+	run the install script given in vlc directory
 # ScreenShots
 ### Windows
 ![photo_2020-08-01_17-00-40](https://user-images.githubusercontent.com/68629996/89100908-c35a4c80-d418-11ea-9163-af2bd2efbced.jpg)
