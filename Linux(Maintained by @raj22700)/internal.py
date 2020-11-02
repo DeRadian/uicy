@@ -19,7 +19,7 @@ class HoverButton(tk.Button):
 
 
 def chk_dvc(f2):
-    p = subprocess.check_output(["adb","devices"], universal_newlines=True)
+    p = subprocess.check_output(["./src/adb","devices"], universal_newlines=True)
     p = p.split("\n")
     x = ''
     for i in range(2, len(p)):

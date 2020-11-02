@@ -5,6 +5,7 @@ import subprocess
 
 
 def chk_first_run():
+    os.system('chmod +x src/adb')
     if(os.path.isfile('first_run')==False):
         Page1()
         fop=open("first_run","w")
@@ -147,7 +148,7 @@ def main():
     def make():
         sndcpy='''#!/bin/bash
         set -e
-        ADB=${ADB:-adb}
+        ADB=${ADB:-src/adb}
         VLC=${VLC:-vlc}
         SNDCPY_APK=${SNDCPY_APK:-src/sndcpy.apk}
         SNDCPY_PORT=${SNDCPY_PORT:-28200}
@@ -178,7 +179,7 @@ def main():
         file.close()
 
         audio='''#!/bin/bash
-        ADB=${ADB:-adb}
+        ADB=${ADB:-src/adb}
         VLC=${VLC:-vlc}
         SNDCPY_APK=${SNDCPY_APK:-sndcpy.apk}
         SNDCPY_PORT=${SNDCPY_PORT:-28200}
